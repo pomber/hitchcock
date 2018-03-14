@@ -1,0 +1,12 @@
+{
+  "name": "hitchcock",
+  "version": "0.0.0",
+  "description": "The Master of Suspense",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pomber/hitchcock.git"
+  },
+  "keywords": ["react"],
+  "license": "MIT",
+  "homepage": "https://github.com/pomber/hitchcock#readme"
+}
