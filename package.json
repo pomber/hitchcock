@@ -6,7 +6,9 @@
     "type": "git",
     "url": "git+https://github.com/pomber/hitchcock.git"
   },
-  "keywords": ["react"],
+  "keywords": [
+    "react"
+  ],
   "license": "MIT",
   "homepage": "https://github.com/pomber/hitchcock#readme"
 }
