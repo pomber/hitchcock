@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import glamorous from "glamorous";
 import { cachePublisher as cache, WAITING, RUNNING, PAUSED, DONE } from "./spy";
-import { createSubscription } from "node_modules/create-subscription/cjs/create-subscription.production.min.js";
+import { createSubscription } from "create-subscription/cjs/create-subscription.production.min.js";
 
 const Subscription = createSubscription({
   getCurrentValue(source) {
