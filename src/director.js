@@ -182,9 +182,8 @@ export const Director = ({ cache }) => (
   </Subscription>
 );
 
-const $director = document.createElement("div");
-document.body.appendChild($director);
-
 export function showDirector() {
+  const $director = document.createElement("div");
+  document.body.appendChild($director);
   ReactDOM.render(<Director cache={cache} />, $director);
 }
