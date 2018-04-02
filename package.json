@@ -2,13 +2,10 @@
   "name": "hitchcock",
   "version": "0.0.3",
   "description": "The Master of Suspense",
-  "main": "index.js",
-  "module": "es/index.js",
-  "files": [
-    "es",
-    "index.js",
-    "umd"
-  ],
+  "main": "dist/hitchcock.cjs.js",
+  "module": "dist/hitchcock.esm.js",
+  "browser": "dist/hitchcock.min.umd.js",
+  "files": ["dist"],
   "scripts": {
     "build": "node build/build.js"
   },
