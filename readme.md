@@ -37,6 +37,10 @@ const MovieDetails = ({ id }) => (
 );
 ```
 
+And the debugger:
+
+![Suspense Debugger](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+
 ## Examples
 
 * A clone of [@karl clone](https://github.com/karl/react-async-io-testbed) of [@dan_abramov demo](https://www.youtube.com/watch?v=6g3g0Q_XVb4) ported to hitchcock: https://codesandbox.io/s/kk2v1op3m5
