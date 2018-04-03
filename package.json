@@ -1,6 +1,6 @@
 {
   "name": "hitchcock",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "The Master of Suspense",
   "main": "dist/hitchcock.cjs.js",
   "module": "dist/hitchcock.esm.js",
