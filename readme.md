@@ -13,11 +13,16 @@ Hitchcock is similar to [simple-cache-provider](https://github.com/facebook/reac
 
 First: this depends on alpha versions of react and react-dom and uses very unstable APIs. Second: I have no idea what I'm doing.
 
+## Examples
+
+* A clone of [@karl clone](https://github.com/karl/react-async-io-testbed) of [@dan_abramov demo](https://www.youtube.com/watch?v=6g3g0Q_XVb4) ported to hitchcock: https://codesandbox.io/s/kk2v1op3m5
+
 ## To do
 
 * [x] Push something
 * [ ] Write readme
 * [ ] Examples
+* [ ] Refactor
 * [ ] Compat with simple-cache-provider
 * [ ] Production build without deps
 * [ ] Update to-do list
