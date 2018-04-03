@@ -39,7 +39,7 @@ const MovieDetails = ({ id }) => (
 
 And the debugger:
 
-![Suspense Debugger](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+![Suspense Debugger](https://user-images.githubusercontent.com/1911623/38225137-d49061ea-36c9-11e8-8042-f3b7e17fb07b.gif)
 
 ## Examples
 
