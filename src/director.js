@@ -112,7 +112,7 @@ const DirectorPanel = glamorous.div({
   right: 10,
   width: 250,
   userSelect: "none",
-  background: "rgba(100, 100, 100, 0.1)",
+  background: "rgba(100, 100, 100, 0.6)",
   fontFamily: `Helvetica Neue, Helvetica, Arial, "Lucida Grande", sans-serif`
 });
 
