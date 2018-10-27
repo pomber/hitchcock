@@ -1,7 +1,7 @@
 import { cachePublisher as cache } from "./spy";
 import React from "react";
 
-function Suspense({ source, params, children }) {
+function InnerSuspense({ source, params, children }) {
   const result = cache.load({
     key: source.getName(params),
     getValue: () => source.getValue(params)
@@ -12,8 +12,8 @@ function Suspense({ source, params, children }) {
 export function Loader({ children, fallback, wait, source, params }) {
   const cacheProps = { source, params, children };
   return (
-    <React.Timeout ms={wait}>
-      {didTimeout => (didTimeout ? fallback : <Suspense {...cacheProps} />)}
-    </React.Timeout>
+    <React.Suspense maxDuration={wait} fallback={fallback}>
+      <InnerSuspense {...cacheProps} />
+    </React.Suspense>
   );
 }

@@ -17,8 +17,8 @@
     "glamorous": "^4.12.1"
   },
   "peerDependencies": {
-    "react": "16.4.0-alpha.0911da3",
-    "react-dom": "16.4.0-alpha.0911da3"
+    "react": "^16.7.0-alpha.0",
+    "react-dom": "^16.7.0-alpha.0"
   },
   "repository": {
     "type": "git",
