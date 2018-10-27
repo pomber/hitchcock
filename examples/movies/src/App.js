@@ -1,13 +1,22 @@
 import React, { useState } from "react";
-import { Loader, showDirector } from "../../../src/index";
 import { useConcurrentState } from "../../../src/utils";
 import { MovieListPage } from "./MovieListPage";
+import {
+  Loader,
+  showDirector,
+  unstable_createResource as createResource
+} from "../../../src/index";
 showDirector();
 
 const moviePageSource = {
   getName: () => "./MoviePage",
   getValue: () => import("./MoviePage")
 };
+
+// const moviePageResource = createResource(
+//   () => import("./MoviePage"),
+//   () => "./MoviePage"
+// );
 
 const App = () => {
   const [
@@ -29,7 +38,7 @@ const App = () => {
   return (
     <div>
       {showDetail ? (
-        <Loader source={moviePageSource} fallback={<div>Loading...</div>}>
+        <Loader source={moviePageSource} fallback={<b>Load..</b>}>
           {({ MoviePage }) => (
             <div>
               <button className="onBack" onClick={handleBackClick}>

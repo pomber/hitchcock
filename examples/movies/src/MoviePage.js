@@ -1,40 +1,35 @@
 import React from "react";
 import { Spinner } from "./Spinner";
 import { fetchMovieDetails, fetchMovieReviews } from "./api";
-import {
-  Loader,
-  unstable_createResource as createResource
-} from "../../../src/index";
-
-const detailsSource = {
-  getName: id => `/movies/${id}/details`,
-  getValue: id => fetchMovieDetails(id)
-};
+import { unstable_createResource as createResource } from "../../../src/index";
 
 const detailsResource = createResource(
   id => fetchMovieDetails(id),
   id => `/movies/${id}/details`
 );
 
-const reviewsSource = {
-  getName: id => `/movies/${id}/reviews`,
-  getValue: id => fetchMovieReviews(id)
-};
+const reviewResource = createResource(
+  id => fetchMovieReviews(id),
+  id => `/movies/${id}/reviews`
+);
 
-const imageSource = {
-  getName: src => src,
-  getValue: src =>
+const imageResource = createResource(
+  src =>
     new Promise(resolve => {
       const image = new Image();
       image.onload = () => resolve(src);
       image.src = src;
     })
-};
+);
 
 export const MoviePage = ({ id }) => (
   <div>
     <MovieDetails id={id} />
-    <MovieReviews id={id} />
+    <div className="MovieReviews">
+      <React.Suspense maxDuration={100} fallback={<Spinner size="medium" />}>
+        <MovieReviews id={id} />
+      </React.Suspense>
+    </div>
   </div>
 );
 
@@ -49,11 +44,10 @@ const MovieDetails = ({ id }) => {
   );
 };
 
-const Img = props => (
-  <Loader source={imageSource} params={props.src}>
-    {src => <img {...props} src={src} />}
-  </Loader>
-);
+const Img = props => {
+  const src = imageResource.read(props.src);
+  return <img {...props} src={src} />;
+};
 
 const MoviePoster = ({ src }) => (
   <div className="MoviePoster">
@@ -75,22 +69,12 @@ const MovieMetrics = movie => (
   </div>
 );
 
-const MovieReviews = ({ id }) => (
-  <div className="MovieReviews">
-    <Loader
-      source={reviewsSource}
-      params={id}
-      wait={100}
-      fallback={<Spinner size="medium" />}
-    >
-      {reviews =>
-        (reviews || []).map((review, index) => (
-          <div className="review" key={index}>
-            <div className="summary">{review.summary}</div>
-            <div className="author">{review.author}</div>
-          </div>
-        ))
-      }
-    </Loader>
-  </div>
-);
+const MovieReviews = ({ id }) => {
+  const reviews = reviewResource.read(id);
+  return (reviews || []).map((review, index) => (
+    <div className="review" key={index}>
+      <div className="summary">{review.summary}</div>
+      <div className="author">{review.author}</div>
+    </div>
+  ));
+};
