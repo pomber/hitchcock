@@ -1,0 +1,21 @@
+{
+  "name": "hitchcock-demo-clone",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "hitchcock": "0.1.0",
+    "louis-xiv": "0.0.2",
+    "react": "16.4.0-alpha.0911da3",
+    "react-dom": "16.4.0-alpha.0911da3",
+    "react-scripts": "1.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "keywords": [],
+  "description":
+    "A clone of @karl clone of @dan_abramov demo ported to hitchcock -> https://github.com/pomber/hitchcock"
+}
