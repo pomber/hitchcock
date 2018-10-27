@@ -22,7 +22,7 @@ const imageResource = createResource(
     })
 );
 
-export const MoviePage = ({ id }) => (
+const MoviePage = ({ id }) => (
   <div>
     <MovieDetails id={id} />
     <div className="MovieReviews">
@@ -78,3 +78,5 @@ const MovieReviews = ({ id }) => {
     </div>
   ));
 };
+
+export default MoviePage;

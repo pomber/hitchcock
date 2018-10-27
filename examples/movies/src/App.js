@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import { useConcurrentState } from "../../../src/utils";
 import { MovieListPage } from "./MovieListPage";
-import {
-  Loader,
-  showDirector,
-  unstable_createResource as createResource
-} from "../../../src/index";
+import { Loader, showDirector, lazy } from "../../../src/index";
 showDirector();
 
 const moviePageSource = {
@@ -17,6 +13,8 @@ const moviePageSource = {
 //   () => import("./MoviePage"),
 //   () => "./MoviePage"
 // );
+
+const MoviePage = lazy(() => import("./MoviePage"));
 
 const App = () => {
   const [
@@ -38,16 +36,14 @@ const App = () => {
   return (
     <div>
       {showDetail ? (
-        <Loader source={moviePageSource} fallback={<b>Load..</b>}>
-          {({ MoviePage }) => (
-            <div>
-              <button className="onBack" onClick={handleBackClick}>
-                {"👈"}
-              </button>
-              <MoviePage id={currentId} />
-            </div>
-          )}
-        </Loader>
+        <React.Suspense fallback={<b>Load..</b>}>
+          <div>
+            <button className="onBack" onClick={handleBackClick}>
+              {"👈"}
+            </button>
+            <MoviePage id={currentId} />
+          </div>
+        </React.Suspense>
       ) : (
         <MovieListPage onMovieClick={handleMovieClick} loadingId={currentId} />
       )}
