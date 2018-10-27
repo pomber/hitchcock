@@ -1,18 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { useConcurrentState } from "../../../src/utils";
 import { MovieListPage } from "./MovieListPage";
-import { Loader, showDirector, lazy } from "../../../src/index";
+import { showDirector, lazy } from "../../../src/index";
 showDirector();
-
-const moviePageSource = {
-  getName: () => "./MoviePage",
-  getValue: () => import("./MoviePage")
-};
-
-// const moviePageResource = createResource(
-//   () => import("./MoviePage"),
-//   () => "./MoviePage"
-// );
 
 const MoviePage = lazy(() => import("./MoviePage"));
 

@@ -46,7 +46,7 @@ const MovieDetails = ({ id }) => {
 
 const Img = props => {
   const src = imageResource.read(props.src);
-  return <img {...props} src={src} />;
+  return <img {...props} src={src} alt={props.alt} />;
 };
 
 const MoviePoster = ({ src }) => (

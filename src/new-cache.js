@@ -13,7 +13,9 @@ export const createResource = (fetch, hashFunc) => {
 };
 
 export const lazy = fetch => {
-  const resource = createResource(fetch, () => "LazyComponent");
+  const resource = createResource(fetch, () => fetch.toString());
+  const Component = React.lazy(fetch);
+  console.log(Component);
   return props => {
     const Component = resource.read().default;
     return <Component {...props} />;
