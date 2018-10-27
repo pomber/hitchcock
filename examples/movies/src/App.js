@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import State from "louis-xiv";
-import { Loader, showDirector } from "hitchcock";
+import { Loader, showDirector } from "../../../src/index";
 import { MovieListPage } from "./MovieListPage";
 showDirector();
 

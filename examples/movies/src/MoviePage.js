@@ -1,7 +1,7 @@
 import React from "react";
 import { Spinner } from "./Spinner";
 import { fetchMovieDetails, fetchMovieReviews } from "./api";
-import { Loader } from "hitchcock";
+import { Loader } from "../../../src/index";
 
 const detailsSource = {
   getName: id => `/movies/${id}/details`,

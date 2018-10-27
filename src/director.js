@@ -102,7 +102,9 @@ const RecordList = ({ records, scrollable }) =>
     <EmptyList>(empty)</EmptyList>
   ) : (
     <List scrollable={scrollable}>
-      {records.map(record => <Record key={record.key} record={record} />)}
+      {records.map(record => (
+        <Record key={record.key} record={record} />
+      ))}
     </List>
   );
 
