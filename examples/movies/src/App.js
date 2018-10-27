@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import State from "louis-xiv";
 import { Loader, showDirector } from "../../../src/index";
 import { useConcurrentState } from "../../../src/utils";
 import { MovieListPage } from "./MovieListPage";
@@ -20,7 +19,6 @@ const App = () => {
     showDetail: false
   });
   const handleMovieClick = id => {
-    console.log("movie", id);
     setState({ currentId: id, showDetail: false });
     deferSetState({ showDetail: true, currentId: id });
   };
@@ -28,7 +26,6 @@ const App = () => {
     setState({ currentId: null, showDetail: false });
   };
 
-  console.log("render", currentId);
   return (
     <div>
       {showDetail ? (

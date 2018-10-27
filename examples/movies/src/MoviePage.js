@@ -1,12 +1,20 @@
 import React from "react";
 import { Spinner } from "./Spinner";
 import { fetchMovieDetails, fetchMovieReviews } from "./api";
-import { Loader } from "../../../src/index";
+import {
+  Loader,
+  unstable_createResource as createResource
+} from "../../../src/index";
 
 const detailsSource = {
   getName: id => `/movies/${id}/details`,
   getValue: id => fetchMovieDetails(id)
 };
+
+const detailsResource = createResource(
+  id => fetchMovieDetails(id),
+  id => `/movies/${id}/details`
+);
 
 const reviewsSource = {
   getName: id => `/movies/${id}/reviews`,
@@ -30,17 +38,16 @@ export const MoviePage = ({ id }) => (
   </div>
 );
 
-const MovieDetails = ({ id }) => (
-  <Loader source={detailsSource} params={id}>
-    {movie => (
-      <div className="MovieDetails">
-        <MoviePoster src={movie.poster} />
-        <h1>{movie.title}</h1>
-        <MovieMetrics {...movie} />
-      </div>
-    )}
-  </Loader>
-);
+const MovieDetails = ({ id }) => {
+  const movie = detailsResource.read(id);
+  return (
+    <div className="MovieDetails">
+      <MoviePoster src={movie.poster} />
+      <h1>{movie.title}</h1>
+      <MovieMetrics {...movie} />
+    </div>
+  );
+};
 
 const Img = props => (
   <Loader source={imageSource} params={props.src}>
