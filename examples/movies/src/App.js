@@ -1,7 +1,8 @@
 import React from "react";
-import { useConcurrentState } from "../../../src/utils";
+import { showDirector, lazy } from "hitchcock";
+import { useConcurrentState } from "hitchcock/utils";
+import { Spinner } from "./Spinner";
 import { MovieListPage } from "./MovieListPage";
-import { showDirector, lazy } from "../../../src/index";
 showDirector();
 
 const MoviePage = lazy(() => import("./MoviePage"));
@@ -26,7 +27,7 @@ const App = () => {
   return (
     <div>
       {showDetail ? (
-        <React.Suspense fallback={<b>Load..</b>}>
+        <React.Suspense fallback={<Spinner />}>
           <div>
             <button className="onBack" onClick={handleBackClick}>
               {"👈"}
