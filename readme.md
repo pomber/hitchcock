@@ -4,7 +4,7 @@
 
 [![npm version](https://img.shields.io/npm/v/hitchcock.svg?style=flat)](https://www.npmjs.com/package/hitchcock)
 
-Hitchcock is similar to [simple-cache-provider](https://github.com/facebook/react/tree/master/packages/simple-cache-provider) with two extras:
+Hitchcock is similar to [react-cache](https://github.com/facebook/react/tree/master/packages/react-cache) with two extras:
 
 * a render-props API
 * a "suspense" debugger
