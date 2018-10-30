@@ -1,0 +1,49 @@
+{
+  "name": "hitchcock",
+  "version": "0.1.0",
+  "description": "The Master of Suspense",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "babel ./src -d ./dist --ignore test.js",
+    "build:watch": "yarn build --watch --source-maps"
+  },
+  "dependencies": {
+    "create-subscription": "^0.1.0",
+    "glamor": "^2.20.40",
+    "glamorous": "^4.12.1"
+  },
+  "peerDependencies": {
+    "react": "^16.7.0-alpha.0",
+    "react-dom": "^16.7.0-alpha.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pomber/hitchcock.git"
+  },
+  "keywords": [
+    "react",
+    "suspense",
+    "concurrent",
+    "cache",
+    "loader",
+    "component",
+    "debug",
+    "async",
+    "dev-tools"
+  ],
+  "author": "Rodrigo Pombo",
+  "license": "MIT",
+  "homepage": "https://github.com/pomber/hitchcock#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "gzip-size": "^4.1.0",
+    "pretty-bytes": "^4.0.2"
+  }
+}
