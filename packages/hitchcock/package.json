@@ -2,15 +2,13 @@
   "name": "hitchcock",
   "version": "0.1.0",
   "description": "The Master of Suspense",
-  "main": "dist/hitchcock.cjs.js",
-  "module": "dist/hitchcock.esm.js",
-  "browser": "dist/hitchcock.min.umd.js",
+  "main": "dist/index.js",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "node build/build.js",
-    "start:demo": "cd ./examples/movies && yarn start"
+    "build": "babel ./src -d ./dist --ignore test.js",
+    "build:watch": "yarn build --watch --source-maps"
   },
   "dependencies": {
     "create-subscription": "^0.1.0",
@@ -28,13 +26,12 @@
   "keywords": [
     "react",
     "suspense",
+    "concurrent",
     "cache",
     "loader",
     "component",
     "debug",
     "async",
-    "render-props",
-    "function-as-child",
     "dev-tools"
   ],
   "author": "Rodrigo Pombo",
@@ -42,20 +39,11 @@
   "homepage": "https://github.com/pomber/hitchcock#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-plugin-dev-expression": "^0.2.1",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "gzip-size": "^4.1.0",
-    "pretty-bytes": "^4.0.2",
-    "rollup": "^0.57.1",
-    "rollup-plugin-babel": "^3.0.3",
-    "rollup-plugin-commonjs": "^9.1.0",
-    "rollup-plugin-node-resolve": "^3.3.0",
-    "rollup-plugin-replace": "^2.0.0",
-    "rollup-plugin-uglify": "^3.0.0"
+    "pretty-bytes": "^4.0.2"
   }
 }
