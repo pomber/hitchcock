@@ -1,61 +1,23 @@
 {
-  "name": "hitchcock",
+  "private": true,
   "version": "0.1.0",
-  "description": "The Master of Suspense",
-  "main": "dist/hitchcock.cjs.js",
-  "module": "dist/hitchcock.esm.js",
-  "browser": "dist/hitchcock.min.umd.js",
-  "files": [
-    "dist"
+  "license": "MIT",
+  "author": "pomber",
+  "repository": "https://github.com/pomber/hitchcock",
+  "workspaces": [
+    "{packages,examples}/*"
   ],
   "scripts": {
-    "build": "node build/build.js",
-    "start:demo": "cd ./examples/movies && yarn start"
+    "build": "lerna run build",
+    "build:packages": "lerna run build --no-private",
+    "build:watch": "lerna exec yarn build:watch --no-private --parallel",
+    "start": "lerna exec yarn start --scope",
+    "start:example": "run-p build:watch \"start {1}\" --",
+    "format": "prettier --write '**/*.{js,jsx,css,md}'",
+    "format:check": "prettier-check '**/*.{js,jsx,css,md}'",
+    "test": "run-p format:check test:all",
+    "test:all": "lerna run test"
   },
-  "dependencies": {
-    "create-subscription": "^0.1.0",
-    "glamor": "^2.20.40",
-    "glamorous": "^4.12.1"
-  },
-  "peerDependencies": {
-    "react": "^16.7.0-alpha.0",
-    "react-dom": "^16.7.0-alpha.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pomber/hitchcock.git"
-  },
-  "keywords": [
-    "react",
-    "suspense",
-    "cache",
-    "loader",
-    "component",
-    "debug",
-    "async",
-    "render-props",
-    "function-as-child",
-    "dev-tools"
-  ],
-  "author": "Rodrigo Pombo",
-  "license": "MIT",
-  "homepage": "https://github.com/pomber/hitchcock#readme",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-plugin-dev-expression": "^0.2.1",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "gzip-size": "^4.1.0",
-    "pretty-bytes": "^4.0.2",
-    "rollup": "^0.57.1",
-    "rollup-plugin-babel": "^3.0.3",
-    "rollup-plugin-commonjs": "^9.1.0",
-    "rollup-plugin-node-resolve": "^3.3.0",
-    "rollup-plugin-replace": "^2.0.0",
-    "rollup-plugin-uglify": "^3.0.0"
   }
 }
