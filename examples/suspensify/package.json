@@ -20,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "postinstall": "cp ./patches/webpackDevServer.config.js ./node_modules/react-scripts/config/webpackDevServer.config.js"
+    "postinstall": "cp ./patches/* ./node_modules/react-scripts/config/"
   },
   "eslintConfig": {
     "extends": "react-app"
