@@ -3,6 +3,12 @@ import React from "react";
 
 export const createResource = (fetch, hashFunc) => {
   return {
+    preload: input => {
+      return cache.preload({
+        key: hashFunc ? hashFunc(input) : input,
+        getValue: () => fetch(input)
+      });
+    },
     read: input => {
       return cache.load({
         key: hashFunc ? hashFunc(input) : input,

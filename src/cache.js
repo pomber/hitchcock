@@ -48,6 +48,24 @@ function load({ key, getValue }, spy = noopSpy) {
   throw record.suspender;
 }
 
+function preload({ key, getValue }, spy = noopSpy) {
+  const record = getRecord(key);
+  if (record.status === EMPTY) {
+    record.status = PENDING;
+    record.suspender = getValue()
+      .then(value => new Promise(resolve => resolve(value)))
+      .then(spy.willResolve(record))
+      .then(value => {
+        record.status = RESOLVED;
+        record.suspender = null;
+        record.value = value;
+        return value;
+      })
+      .then(spy.didResolve(record));
+    spy.didStart(record);
+  }
+}
+
 function clear(key, spy = noopSpy) {
   let record = cache.get(key);
   if (record !== undefined) {
@@ -63,6 +81,7 @@ function clearAll(spy = noopSpy) {
 
 export default {
   load,
+  preload,
   clear,
   clearAll
 };

@@ -71,14 +71,13 @@ class RecordPublisher extends Publisher {
           status,
           completion:
             100 -
-            100 *
-              (this.remaining - (new Date() - this.started)) /
+            (100 * (this.remaining - (new Date() - this.started))) /
               this.originalDelay
         };
       case PAUSED:
         return {
           status,
-          completion: 100 - 100 * this.remaining / this.originalDelay
+          completion: 100 - (100 * this.remaining) / this.originalDelay
         };
       case DONE:
         return {
@@ -149,6 +148,9 @@ class CachePublisher extends Publisher {
   }
   load(x) {
     return cache.load(x, spy);
+  }
+  preload(x) {
+    return cache.preload(x, spy);
   }
 }
 
