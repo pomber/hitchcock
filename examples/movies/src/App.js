@@ -1,9 +1,8 @@
 import React from "react";
-import { showDirector, lazy } from "hitchcock";
+import { lazy } from "hitchcock";
 import { useConcurrentState } from "hitchcock/dist/utils";
 import { Spinner } from "./Spinner";
 import { MovieListPage } from "./MovieListPage";
-showDirector();
 
 const MoviePage = lazy(() => import("./MoviePage"));
 

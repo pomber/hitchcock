@@ -1,9 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import glamorous from "glamorous";
 import { cachePublisher as cache, WAITING, RUNNING, PAUSED, DONE } from "./spy";
 import { createSubscription } from "create-subscription/cjs/create-subscription.production.min.js";
 import Draggable from "react-draggable";
+import ReactDOM from "react-dom";
 
 const Subscription = createSubscription({
   getCurrentValue(source) {
@@ -46,7 +46,7 @@ const Row = glamorous.li({
 });
 
 const ProgressBar = glamorous.div(({ completion }) => ({
-  borderBottom: "solid 1px #aaa",
+  borderBottom: "solid 1px #222",
   width: `${completion}%`
 }));
 
@@ -147,7 +147,7 @@ const Slider = glamorous.div({
   alignItems: "center"
 });
 
-export const Director = ({ cache }) => (
+const Director = ({ cache }) => (
   <Subscription source={cache}>
     {({ pendingRecords, settledRecords, delay, startPaused }) => (
       <Draggable>
@@ -190,7 +190,11 @@ export const Director = ({ cache }) => (
 );
 
 export function showDirector() {
-  const $director = document.createElement("div");
-  document.body.appendChild($director);
-  ReactDOM.render(<Director cache={cache} />, $director);
+  const directorId = "hitchcock-director";
+  if (!document.getElementById(directorId)) {
+    const $director = document.createElement("div");
+    $director.id = directorId;
+    document.body.appendChild($director);
+    ReactDOM.render(<Director cache={cache} />, $director);
+  }
 }

@@ -3,9 +3,8 @@ import { Router } from "@reach/router";
 import Nav from "./components/Nav/Nav";
 import PlayerProvider from "./components/PlayerProvider";
 import { Spinner } from "./components/Spinner";
-import { lazy, showDirector } from "hitchcock";
+import { lazy } from "hitchcock";
 
-showDirector();
 const HomePage = lazy(() => import("./components/HomePage"));
 const ArtistPage = lazy(() => import("./components/ArtistPage"));
 
