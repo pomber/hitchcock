@@ -1,11 +1,14 @@
-import React from 'react';
-import { fetchArtistAlbumsJSON } from '../api';
-import { Link } from '@reach/router';
-import IconPerson from './Icon/IconPerson';
-import { Img } from 'the-platform';
-import { unstable_createResource } from 'react-cache';
+import React from "react";
+import { fetchArtistAlbumsJSON } from "../api";
+import { Link } from "@reach/router";
+import IconPerson from "./Icon/IconPerson";
+import { Img } from "the-platform";
+import { unstable_createResource } from "hitchcock";
 
-const ArtistAlbumsResource = unstable_createResource(fetchArtistAlbumsJSON);
+const ArtistAlbumsResource = unstable_createResource(
+  fetchArtistAlbumsJSON,
+  id => `/artists/${id}/albums`
+);
 
 class ArtistAlbums extends React.Component {
   render() {

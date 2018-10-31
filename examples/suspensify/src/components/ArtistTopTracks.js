@@ -1,15 +1,17 @@
-import React from 'react';
-import { Track } from './Track';
-import { fetchArtistTopTracksJSON } from '../api';
+import React from "react";
+import { Track } from "./Track";
+import { fetchArtistTopTracksJSON } from "../api";
 
-import { unstable_createResource } from 'react-cache';
+import { unstable_createResource } from "hitchcock";
 
 const ArtistTopTracksResource = unstable_createResource(
-  fetchArtistTopTracksJSON
+  fetchArtistTopTracksJSON,
+  id => `/artists/${id}/top-tracks`
 );
 
 function ArtistTopTracks({ id }) {
   const tracks = ArtistTopTracksResource.read(id);
+  console.log(tracks);
   return (
     <div className="topTracks">
       <h3>Top Tracks</h3>

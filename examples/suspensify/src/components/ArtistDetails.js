@@ -1,6 +1,6 @@
-import React from 'react';
-import { fetchArtistJSON } from '../api';
-import { unstable_createResource } from 'react-cache';
+import React from "react";
+import { fetchArtistJSON } from "../api";
+import { unstable_createResource } from "hitchcock";
 
 export const ImageResource = unstable_createResource(
   source =>
@@ -18,7 +18,10 @@ const Img = ({ src, alt, ...props }) => {
 
 // I didn't get this far in the talk,
 // but it's the same as the rest of the sections...
-const ArtistResource = unstable_createResource(fetchArtistJSON);
+const ArtistResource = unstable_createResource(
+  fetchArtistJSON,
+  id => `/artists/${id}`
+);
 
 class ArtistDetails extends React.Component {
   render() {
