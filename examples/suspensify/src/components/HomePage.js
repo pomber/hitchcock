@@ -1,17 +1,20 @@
-import React from 'react';
-import ListItem from './ListItem';
-import { fetchArtistListJSON } from '../api';
-import { Logo } from './Icon/Logo';
-import { unstable_createResource } from 'react-cache';
-import { Spinner } from './Spinner';
+import React from "react";
+import ListItem from "./ListItem";
+import { fetchArtistListJSON } from "../api";
+import { Logo } from "./Icon/Logo";
+import { unstable_createResource } from "hitchcock";
+import { Spinner } from "./Spinner";
 
-const ArttistListResource = unstable_createResource(fetchArtistListJSON);
+const ArttistListResource = unstable_createResource(
+  fetchArtistListJSON,
+  () => "/artists"
+);
 
 class Search extends React.Component {
   state = {
     // toggles whether to show or hide the inline loading spinner
     // just like native iOS!
-    currentId: null,
+    currentId: null
   };
 
   render() {

@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import glamorous from "glamorous";
 import { cachePublisher as cache, WAITING, RUNNING, PAUSED, DONE } from "./spy";
 import { createSubscription } from "create-subscription/cjs/create-subscription.production.min.js";
+import Draggable from "react-draggable";
 
 const Subscription = createSubscription({
   getCurrentValue(source) {
@@ -113,6 +114,7 @@ const DirectorPanel = glamorous.div({
   top: 10,
   right: 10,
   width: 250,
+  zIndex: 99999,
   userSelect: "none",
   background: "rgba(100, 100, 100, 0.6)",
   fontFamily: `Helvetica Neue, Helvetica, Arial, "Lucida Grande", sans-serif`
@@ -147,39 +149,41 @@ const Slider = glamorous.div({
 export const Director = ({ cache }) => (
   <Subscription source={cache}>
     {({ pendingRecords, settledRecords, delay, startPaused }) => (
-      <DirectorPanel>
-        <Slider onChange={e => cache.setDelay(e.target.value)}>
-          Delay:
-          {[0, 1, 2, 4].map(d => (
-            <label key={d}>
+      <Draggable>
+        <DirectorPanel>
+          <Slider onChange={e => cache.setDelay(e.target.value)}>
+            Delay:
+            {[0, 1, 2, 4].map(d => (
+              <label key={d}>
+                <input
+                  type="radio"
+                  name="delay"
+                  value={d}
+                  defaultChecked={delay === d}
+                />
+                {d}s
+              </label>
+            ))}
+          </Slider>
+          <Header>
+            <span>Pending</span>
+            <label>
+              Start paused
               <input
-                type="radio"
-                name="delay"
-                value={d}
-                defaultChecked={delay === d}
+                type="checkbox"
+                checked={startPaused}
+                onChange={() => cache.toggleStartPaused()}
               />
-              {d}s
             </label>
-          ))}
-        </Slider>
-        <Header>
-          <span>Pending</span>
-          <label>
-            Start paused
-            <input
-              type="checkbox"
-              checked={startPaused}
-              onChange={() => cache.toggleStartPaused()}
-            />
-          </label>
-        </Header>
-        <RecordList records={pendingRecords} />
-        <Header>
-          <span>Cached</span>
-          <span onClick={() => cache.clearAll()}>Clear all</span>
-        </Header>
-        <RecordList records={settledRecords} scrollable />
-      </DirectorPanel>
+          </Header>
+          <RecordList records={pendingRecords} />
+          <Header>
+            <span>Cached</span>
+            <span onClick={() => cache.clearAll()}>Clear all</span>
+          </Header>
+          <RecordList records={settledRecords} scrollable />
+        </DirectorPanel>
+      </Draggable>
     )}
   </Subscription>
 );
