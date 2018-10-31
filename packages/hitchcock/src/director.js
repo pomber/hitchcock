@@ -75,7 +75,7 @@ const Record = ({ record }) => (
         }}
       >
         <div>
-          <span>{record.key}</span>
+          <span title={record.key}>{record.key}</span>
           {buttons[status]}
         </div>
         <ProgressBar completion={completion} />
