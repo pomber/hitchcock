@@ -30,9 +30,9 @@ const env = getClientEnvironment(publicUrl);
 
 // Assert this just to be safe.
 // Development builds of React are slow and not intended for production.
-if (env.stringified["process.env"].NODE_ENV !== '"production"') {
-  throw new Error("Production builds must have NODE_ENV=production.");
-}
+// if (env.stringified["process.env"].NODE_ENV !== '"production"') {
+//   throw new Error("Production builds must have NODE_ENV=production.");
+// }
 
 // Note: defined here because it will be used more than once.
 const cssFilename = "static/css/[name].[contenthash:8].css";
@@ -50,7 +50,6 @@ const extractTextPluginOptions = shouldUseRelativeAssetPaths
 // It compiles slowly and is focused on producing a fast and minimal bundle.
 // The development configuration is different and lives in a separate file.
 module.exports = {
-  mode: "development",
   // Don't attempt to continue if there are any errors.
   bail: true,
   // We generate sourcemaps in production. This is slow but gives good results.
@@ -65,7 +64,7 @@ module.exports = {
     // There will be one main bundle, and one file per asynchronous chunk.
     // We don't currently advertise code splitting but Webpack supports it.
     filename: "static/js/[name].[chunkhash:8].js",
-    chunkFilename: "static/js/[name].[chunkhash:8].chunk.js",
+    chunkFilename: "static/js/[name].chunk.js",
     // We inferred the "public path" (such as / or /my-project) from homepage.
     publicPath: publicPath,
     // Point sourcemap entries to original disk location (format as URL on Windows)
