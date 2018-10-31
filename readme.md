@@ -2,58 +2,66 @@
 >
 > — <cite>Alfred Hitchcock</cite>
 
-[![npm version](https://img.shields.io/npm/v/hitchcock.svg?style=flat)](https://www.npmjs.com/package/hitchcock)
+# Hitchcock [![npm version](https://img.shields.io/npm/v/hitchcock.svg?style=flat)](https://www.npmjs.com/package/hitchcock)
 
-Hitchcock is similar to [react-cache](https://github.com/facebook/react/tree/master/packages/react-cache) with two extras:
+**Hitchcock is a debugging tool for React Suspense.**  
+It wraps your calls to `React.lazy()` and [react-cache](https://github.com/facebook/react/tree/master/packages/react-cache)'s `createResource()` and let you pause, delay or invalidate them.
 
-* a render-props API
-* a "suspense" debugger
+<div align="center">
+<a href="https://hitchcock-movies.netlify.com">
+<img alt="Suspense Debugger" src="https://user-images.githubusercontent.com/1911623/38225137-d49061ea-36c9-11e8-8042-f3b7e17fb07b.gif" />
+</a>
+</div>
 
-## 🚨 EXPERIMENTAL 🚨
+### 🚨 EXPERIMENTAL 🚨
 
-First: this depends on alpha versions of react and react-dom and uses very unstable APIs. Second: I have no idea what I'm doing.
+Use this only for experimenting with the new React API. **Hitchcock is inefficient and unstable**. Also, I have no idea what I'm doing.
 
-Hitchcock's API looks like this (for now):
+## Demos
 
-```js
-import { fetchMovieDetails } from "./api";
-import { Loader } from "hitchcock";
+- [**Movies**](https://hitchcock-movies.netlify.com):
+  A clone of [@karl clone](https://github.com/karl/react-async-io-testbed) of [@dan_abramov demo](https://www.youtube.com/watch?v=6g3g0Q_XVb4)
+- [**Suspensify**](https://hitchcock-suspensify.netlify.com):
+  A clone of the [suspense demo](https://github.com/jaredpalmer/react-conf-2018) from [Jared Palmer](https://twitter.com/jaredpalmer)'s [React Conf talk](https://www.youtube.com/watch?v=SCQgE4mTnjU&feature=youtu.be).
 
-const detailsSource = {
-  getName: id => `/movies/${id}/details`, // this becomes the cache key
-  getValue: id => fetchMovieDetails(id) // this is the "suspender", it returns a promise
-};
+The code is in the [examples folder](https://github.com/pomber/hitchcock/tree/master/examples).
 
-const MovieDetails = ({ id }) => (
-  <Loader source={detailsSource} params={id}>
-    {movie => (
-      <div>
-        <MoviePoster src={movie.poster} />
-        <h1>{movie.title}</h1>
-        <MovieMetrics {...movie} />
-      </div>
-    )}
-  </Loader>
-);
+## Usage
+
+Add the dependency:
+
+```bash
+$ yarn add hitchcock
 ```
 
-And the debugger:
+Import `lazy` and `createResource` from `hitchcock` (instead of importing them from `react`/`react-cache`):
 
-![Suspense Debugger](https://user-images.githubusercontent.com/1911623/38225137-d49061ea-36c9-11e8-8042-f3b7e17fb07b.gif)
+```js
+import {
+  lazy,
+  unstable_createResource as createResource,
+  Director
+} from "hitchcock";
+```
 
-## Examples
+Also import the `Director` component, and add it somewhere in your app:
 
-* A clone of [@karl clone](https://github.com/karl/react-async-io-testbed) of [@dan_abramov demo](https://www.youtube.com/watch?v=6g3g0Q_XVb4) ported to hitchcock: https://codesandbox.io/s/kk2v1op3m5
+```jsx
+function YourApp() {
+  return (
+    <Director>
+      <YourStuff />
+    </Director>
+  );
+}
+```
 
-## To do
+Then use `lazy` and `createResource`.
 
-* [x] Push something
-* [ ] Write readme
-* [ ] Examples
-* [ ] Refactor
-* [ ] Compat with simple-cache-provider
-* [ ] Production build without deps
-* [ ] Update to-do list
+## Gotchas
+
+- Try to always use the second parameter of `createResource`.
+- I'm doing an ugly hack to get the name of the component name from the `lazy()` call. Pleas, create an issue if it shows the wrong name.
 
 ## License
 
