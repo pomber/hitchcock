@@ -50,6 +50,7 @@ const extractTextPluginOptions = shouldUseRelativeAssetPaths
 // It compiles slowly and is focused on producing a fast and minimal bundle.
 // The development configuration is different and lives in a separate file.
 module.exports = {
+  mode: "development",
   // Don't attempt to continue if there are any errors.
   bail: true,
   // We generate sourcemaps in production. This is slow but gives good results.
@@ -288,7 +289,7 @@ module.exports = {
         }
         console.log(message);
       },
-      minify: true,
+      minify: false,
       // For unknown URLs, fallback to the index page
       navigateFallback: publicUrl + "/index.html",
       // Ignores URLs starting from /__ (useful for Firebase):
