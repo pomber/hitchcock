@@ -18,8 +18,20 @@ export const createResource = (fetch, hashFunc) => {
   };
 };
 
+const extractImportName = func => {
+  const regex = /([A-z\.\-]*)(\.jsx?|\.tsx?)/;
+  const result = func.toString().match(regex);
+  if (result) {
+    return result[1].trim();
+  }
+  return func.toString();
+};
+
 export const lazy = fetch => {
-  const resource = createResource(fetch, () => "Lazy " + fetch.toString());
+  const resource = createResource(
+    fetch,
+    () => `lazy(${extractImportName(fetch)})`
+  );
   // const Component = React.lazy(fetch);
   // console.log(Component);
   return props => {
