@@ -13,7 +13,8 @@
   "dependencies": {
     "create-subscription": "^0.1.0",
     "glamor": "^2.20.40",
-    "glamorous": "^4.12.1"
+    "glamorous": "^4.12.1",
+    "react-draggable": "^3.0.5"
   },
   "peerDependencies": {
     "react": "^16.7.0-alpha.0",
