@@ -45,7 +45,29 @@ Then use `lazy` and `createResource`.
 ## Gotchas
 
 - Try to always use the second parameter of `createResource`.
-- I'm doing an ugly hack to get the name of the component name from the `lazy()` call. Pleas, create an issue if it shows the wrong name.
+- I'm doing an ugly hack to get the component name from the `lazy()` call. Please, create an issue if it shows the wrong name.
+
+## Contributing
+
+```bash
+$ git clone git@github.com:pomber/hitchcock.git
+$ cd hitchcock
+$ npx lerna bootstrap
+```
+
+Run the examples:
+
+```bash
+$ yarn start:example movies
+$ yarn start:example suspensify
+```
+
+Publish new version:
+
+```bash
+$ yarn build:packages
+$ npx lerna publish
+```
 
 ## License
 
