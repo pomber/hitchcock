@@ -11,7 +11,7 @@ const ArtistTopTracksResource = unstable_createResource(
 
 function ArtistTopTracks({ id }) {
   const tracks = ArtistTopTracksResource.read(id);
-  console.log(tracks);
+  // console.log(tracks);
   return (
     <div className="topTracks">
       <h3>Top Tracks</h3>
