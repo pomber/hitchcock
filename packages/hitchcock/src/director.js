@@ -189,12 +189,22 @@ const Director = ({ cache }) => (
   </Subscription>
 );
 
-export function showDirector() {
+function showDirector() {
   const directorId = "hitchcock-director";
   if (!document.getElementById(directorId)) {
     const $director = document.createElement("div");
     $director.id = directorId;
     document.body.appendChild($director);
     ReactDOM.render(<Director cache={cache} />, $director);
+  }
+}
+
+export default class extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    showDirector();
+  }
+  render() {
+    return this.props.children;
   }
 }

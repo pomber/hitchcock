@@ -37,8 +37,23 @@ $ yarn add hitchcock
 Import `lazy` and `createResource` from `hitchcock` (instead of importing them from `react`/`react-cache`):
 
 ```js
-import { lazy, unstable_createResource as createResource } from "hitchcock";
+import {
+  lazy,
+  unstable_createResource as createResource,
+  Director
+} from "hitchcock";
 ```
+
+Also import the `Director` component, and add it somewhere in your app:
+
+````jsx
+function YourApp() {
+ return (
+   <Director>
+     <YourStuff />
+   </Director>
+ );
+}
 
 Then use `lazy` and `createResource`.
 
@@ -53,7 +68,7 @@ Then use `lazy` and `createResource`.
 $ git clone git@github.com:pomber/hitchcock.git
 $ cd hitchcock
 $ npx lerna bootstrap
-```
+````
 
 Run the examples:
 
