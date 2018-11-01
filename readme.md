@@ -55,6 +55,7 @@ function YourApp() {
    </Director>
  );
 }
+```
 
 Then use `lazy` and `createResource`.
 
