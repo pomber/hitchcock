@@ -1,6 +1,6 @@
 {
   "name": "hitchcock",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "The Master of Suspense",
   "main": "dist/index.js",
   "files": [
