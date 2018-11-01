@@ -2,20 +2,19 @@
 >
 > — <cite>Alfred Hitchcock</cite>
 
-# Hitchcock [![npm version](https://img.shields.io/npm/v/hitchcock.svg?style=flat)](https://www.npmjs.com/package/hitchcock)
-
-**Hitchcock is a debugging tool for React Suspense.**  
-It wraps your calls to `React.lazy()` and [react-cache](https://github.com/facebook/react/tree/master/packages/react-cache)'s `createResource()` and let you pause, delay or invalidate them.
-
 <div align="center">
 <a href="https://hitchcock-movies.netlify.com">
 <img alt="Suspense Debugger" src="https://user-images.githubusercontent.com/1911623/38225137-d49061ea-36c9-11e8-8042-f3b7e17fb07b.gif" />
 </a>
 </div>
 
+# Hitchcock [![npm version](https://img.shields.io/npm/v/hitchcock.svg?style=flat)](https://www.npmjs.com/package/hitchcock)
+
+**Hitchcock is a debugging tool for React Suspense.** It wraps your calls to `React.lazy()` and [react-cache](https://github.com/facebook/react/tree/master/packages/react-cache)'s `createResource()` and let you pause, delay or invalidate them.
+
 ### 🚨 EXPERIMENTAL 🚨
 
-Use this only for experimenting with the new React API. **Hitchcock is inefficient and unstable**. Also, I have no idea what I'm doing.
+Use this only for experimenting with the new React API. Hitchcock is inefficient and unstable. Also, I have no idea what I'm doing.
 
 ## Demos
 
@@ -27,6 +26,8 @@ Use this only for experimenting with the new React API. **Hitchcock is inefficie
 The code is in the [examples folder](https://github.com/pomber/hitchcock/tree/master/examples).
 
 ## Usage
+
+> Try it in [CodeSandbox](https://codesandbox.io/s/ovqlz507pz)
 
 Add the dependency:
 
