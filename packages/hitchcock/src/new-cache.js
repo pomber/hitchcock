@@ -19,10 +19,16 @@ export const createResource = (fetch, hashFunc) => {
 };
 
 const extractImportName = func => {
-  const regex = /([A-z\.\-]*)(\.jsx?|\.tsx?)/;
-  const result = func.toString().match(regex);
-  if (result) {
-    return result[1].trim();
+  const webpackRegex = /([A-z\.\-]*)(\.jsx?|\.tsx?)/;
+  const webpackResult = func.toString().match(webpackRegex);
+  if (webpackResult) {
+    return webpackResult[1].trim();
+  }
+
+  const requireRegex = /require\((.*?)\)/;
+  const requireResult = func.toString().match(requireRegex);
+  if (requireResult) {
+    return requireResult[1].trim();
   }
   return func.toString();
 };
