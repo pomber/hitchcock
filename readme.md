@@ -47,13 +47,13 @@ import {
 
 Also import the `Director` component, and add it somewhere in your app:
 
-````jsx
+```jsx
 function YourApp() {
- return (
-   <Director>
-     <YourStuff />
-   </Director>
- );
+  return (
+    <Director>
+      <YourStuff />
+    </Director>
+  );
 }
 ```
 
@@ -70,7 +70,7 @@ Then use `lazy` and `createResource`.
 $ git clone git@github.com:pomber/hitchcock.git
 $ cd hitchcock
 $ npx lerna bootstrap
-````
+```
 
 Run the examples:
 
