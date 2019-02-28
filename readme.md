@@ -12,7 +12,8 @@
 
 **Hitchcock is a debugging tool for React Suspense.** It wraps your calls to `React.lazy()` and [react-cache](https://github.com/facebook/react/tree/master/packages/react-cache)'s `createResource()` and let you pause, delay or invalidate them.
 
-> Follow [@pomber](https://twitter.com/pomber) for updates
+> If you like this project consider [backing my open source work on Patreon!](https://patreon.com/pomber)  
+> And follow [@pomber](https://twitter.com/pomber) on twitter for updates.
 
 ### 🚨 EXPERIMENTAL 🚨
 
