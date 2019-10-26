@@ -8,7 +8,6 @@ SHAME TO MY HOUSE AND FAMILY. I AM SORRY.
 
 */
 
-
 *,
 *::before,
 *::after {
@@ -71,9 +70,8 @@ h6 {
 }
 
 .flex-1 {
-  flex: 1
+  flex: 1;
 }
-
 
 .center {
   text-align: center;
@@ -99,7 +97,6 @@ h6 {
   }
 
   .search {
-
     margin: 0 auto;
     padding: 1rem;
     box-sizing: border-box;
@@ -112,7 +109,7 @@ h6 {
     .input {
       margin: 2rem 0;
       width: 100%;
-      padding: .5rem 1rem;
+      padding: 0.5rem 1rem;
       border-radius: 4px;
       font-size: 1.25rem;
       display: block;
@@ -128,7 +125,6 @@ h6 {
     }
 
     .empty {
-
       margin: 2rem auto;
       font-weight: bold;
       text-align: center;
@@ -148,6 +144,7 @@ h6 {
     background: $white;
 
     .logo {
+      cursor: pointer;
       color: $black;
       font-size: 18px;
       letter-spacing: -0.03em;
@@ -160,7 +157,9 @@ h6 {
   }
 
   .item {
-    padding: 1rem .5rem;
+    cursor: pointer;
+
+    padding: 1rem 0.5rem;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -182,7 +181,7 @@ h6 {
     .name {
       font-size: 1.25rem;
       font-weight: bold;
-      margin-bottom: .25rem;
+      margin-bottom: 0.25rem;
       word-wrap: none;
       max-width: 320px;
       overflow: hidden;
@@ -194,7 +193,6 @@ h6 {
       color: $dark;
       font-size: 11px;
     }
-
   }
 
   .artist {
@@ -221,12 +219,7 @@ h6 {
       border-radius: 50%;
       z-index: 2;
     }
-
-
-
-
   }
-
 }
 
 .artwork {
@@ -252,8 +245,6 @@ h6 {
   }
 }
 
-
-
 .album-artwork {
   position: relative;
   color: $black;
@@ -262,7 +253,7 @@ h6 {
 .album-image {
   overflow: hidden;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, .2), 0 8px 15px rgba(0, 0, 0, .2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 8px 15px rgba(0, 0, 0, 0.2);
   object-fit: cover;
   height: 200px;
   vertical-align: middle;
@@ -272,8 +263,6 @@ h6 {
   &:hover {
     transform: translateY(-3px);
   }
-
-
 }
 
 img.preview {
@@ -282,7 +271,7 @@ img.preview {
 
 img.loaded {
   opacity: 1;
-  animation: reveal .3s ease-in;
+  animation: reveal 0.3s ease-in;
 }
 
 @keyframes reveal {
@@ -295,16 +284,14 @@ img.loaded {
   }
 }
 
-
-
 .album-title {
   font-size: 1rem;
-  margin: 1rem 0 .25rem;
+  margin: 1rem 0 0.25rem;
   font-weight: 800;
 }
 
 .album-meta {
-  font-size: .75rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   color: $dark;
 }
@@ -318,9 +305,8 @@ svg {
 }
 
 .artist-concerts {
-
   h4 {
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
   }
 
   button {
@@ -329,14 +315,14 @@ svg {
     text-transform: uppercase;
     border: 0;
     font-size: 1rem;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     border-radius: 6px;
     font-weight: bold;
-    transition: all .2s ease;
+    transition: all 0.2s ease;
     cursor: pointer;
 
     &:hover {
-      opacity: .8;
+      opacity: 0.8;
     }
   }
 
@@ -345,10 +331,6 @@ svg {
     align-items: center;
   }
 }
-
-
-
-
 
 :root {
   --color-debuggerBg: #f7f7f7;
@@ -366,6 +348,10 @@ svg {
   --color-buttonBorder: #e7e7e7;
 
   --pt: 8px;
+}
+
+#hitchcock-director > div {
+  top: 60px !important;
 }
 
 /* -------------------------------- */
@@ -386,9 +372,9 @@ svg {
 
 .🎛 {
   position: fixed;
-  max-width: calc(var(--pt)*31);
+  max-width: calc(var(--pt) * 31);
   border-radius: var(--pt);
-  padding: calc(var(--pt)*2);
+  padding: calc(var(--pt) * 2);
   background-color: var(--color-debuggerBg);
   border: 1px solid var(--color-debuggerBorder);
   border-radius: 0.5rem;
@@ -401,9 +387,9 @@ svg {
   border: 1px solid var(--color-buttonBorder);
   border-radius: var(--pt);
   padding: 0;
-  width: calc(var(--pt)*5);
-  height: calc(var(--pt)*5);
-  font-size: calc(var(--pt)*3);
+  width: calc(var(--pt) * 5);
+  height: calc(var(--pt) * 5);
+  font-size: calc(var(--pt) * 3);
   line-height: 1;
   font-weight: bold;
   cursor: pointer;
@@ -411,15 +397,15 @@ svg {
 }
 
 .🕹.👶 {
-  width: calc(var(--pt)*3);
-  height: calc(var(--pt)*3);
-  font-size: calc(var(--pt)*2);
+  width: calc(var(--pt) * 3);
+  height: calc(var(--pt) * 3);
+  font-size: calc(var(--pt) * 2);
 }
 
 .🕹.🐘 {
   width: auto;
-  height: calc(var(--pt)*7);
-  padding: var(--pt) calc(var(--pt)*2);
+  height: calc(var(--pt) * 7);
+  padding: var(--pt) calc(var(--pt) * 2);
 }
 
 .🕹:hover {

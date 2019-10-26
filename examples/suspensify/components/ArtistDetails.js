@@ -33,7 +33,6 @@ function ArtistHeader({ artist }) {
   return (
     <div className="heading">
       <React.Suspense
-        maxDuration={500}
         fallback={
           <img
             className="artist-image preview"

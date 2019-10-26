@@ -1,18 +1,20 @@
-import React from 'react';
-import { fetchArtistAlbumsJSON } from '../api';
-import { Link } from '@reach/router';
-import IconPerson from './Icon/IconPerson';
-import { unstable_createResource } from 'react-cache';
-import { Img } from 'the-platform';
-const ArtistAlbumsResource = unstable_createResource(fetchArtistAlbumsJSON);
+import React from "react";
+import { fetchArtistAlbumsJSON } from "../api";
+import IconPerson from "./Icon/IconPerson";
+import Img from "./Img";
+import { unstable_createResource } from "hitchcock";
+
+const ArtistAlbumsResource = unstable_createResource(
+  fetchArtistAlbumsJSON,
+  id => `/artists/${id}/albums`
+);
 
 class ArtistAlbums extends React.Component {
   render() {
-    const albums = ArtistAlbumsResource.read(this.props.id);
     return (
       <>
         <h3>Albums</h3>
-        <AlbumGrid albums={albums} />
+        <AlbumGrid albums={ArtistAlbumsResource.read(this.props.id)} />
       </>
     );
   }
@@ -31,7 +33,7 @@ function AlbumGrid({ albums }) {
 
 function AlbumItem({ album }) {
   return (
-    <Link to={`/album/${album.id}`} key={album.id}>
+    <span key={album.id}>
       {album.images && album.images.length > 0 ? (
         <div className="album-artwork">
           <React.Suspense
@@ -59,7 +61,7 @@ function AlbumItem({ album }) {
           <IconPerson />
         </div>
       )}
-    </Link>
+    </span>
   );
 }
 

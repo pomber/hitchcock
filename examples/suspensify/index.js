@@ -4,7 +4,8 @@ import App from "./App";
 import { Director } from "hitchcock";
 import "./index.scss";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+const container = document.getElementById("root");
+ReactDOM.createRoot(container).render(
   <Director>
     <App />
   </Director>

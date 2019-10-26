@@ -1,12 +1,10 @@
-import React from 'react';
-import { Link } from '@reach/router';
-import { Spinner } from './Spinner';
-import { Img } from 'the-platform';
+import React from "react";
+import { Spinner } from "./Spinner";
+import Img from "./Img";
 
 function ListItem({ item, to, onClick, currentId }) {
   return (
-    <Link
-      to={to}
+    <a
       className="name"
       onClick={() => {
         if (onClick) {
@@ -17,7 +15,6 @@ function ListItem({ item, to, onClick, currentId }) {
       <div className="item" key={item.id}>
         {/* Instead of placing fallback here, better to wait for all the images to be ready */}
         <React.Suspense
-          maxDuration={1000}
           fallback={
             <img
               className="artwork preview"
@@ -37,7 +34,7 @@ function ListItem({ item, to, onClick, currentId }) {
         </div>
         <div>{currentId === item.id ? <Spinner /> : null}</div>
       </div>
-    </Link>
+    </a>
   );
 }
 
