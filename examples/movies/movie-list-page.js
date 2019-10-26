@@ -1,6 +1,6 @@
 import React from "react";
 import { moviesOverview } from "./api";
-import { Spinner } from "./Spinner";
+import { Spinner } from "./spinner";
 
 export const MovieListPage = ({ loadingId, onMovieClick }) => {
   return (

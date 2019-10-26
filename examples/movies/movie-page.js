@@ -1,5 +1,5 @@
 import React from "react";
-import { Spinner } from "./Spinner";
+import { Spinner } from "./spinner";
 import { fetchMovieDetails, fetchMovieReviews } from "./api";
 import { unstable_createResource as createResource } from "hitchcock";
 
@@ -26,7 +26,7 @@ const MoviePage = ({ id }) => (
   <div>
     <MovieDetails id={id} />
     <div className="MovieReviews">
-      <React.Suspense maxDuration={100} fallback={<Spinner size="medium" />}>
+      <React.Suspense fallback={<Spinner size="medium" />}>
         <MovieReviews id={id} />
       </React.Suspense>
     </div>
