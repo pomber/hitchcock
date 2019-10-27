@@ -2,9 +2,9 @@ import React from "react";
 import { fetchArtistAlbumsJSON } from "../api";
 import IconPerson from "./Icon/IconPerson";
 import Img from "./Img";
-import { unstable_createResource } from "hitchcock";
+import { createResource } from "hitchcock";
 
-const ArtistAlbumsResource = unstable_createResource(
+const ArtistAlbumsResource = createResource(
   fetchArtistAlbumsJSON,
   id => `/artists/${id}/albums`
 );

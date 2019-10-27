@@ -2,10 +2,10 @@ import React from "react";
 import ListItem from "./ListItem";
 import { fetchArtistListJSON } from "../api";
 import { Logo } from "./Icon/Logo";
-import { unstable_createResource } from "hitchcock";
+import { createResource } from "hitchcock";
 import { Spinner } from "./Spinner";
 
-const ArttistListResource = unstable_createResource(
+const ArttistListResource = createResource(
   fetchArtistListJSON,
   () => "/artists"
 );

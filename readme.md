@@ -41,11 +41,7 @@ $ yarn add hitchcock
 Import `lazy` and `createResource` from `hitchcock` (instead of importing them from `react`/`react-cache`):
 
 ```js
-import {
-  lazy,
-  unstable_createResource as createResource,
-  Director
-} from "hitchcock";
+import { lazy, createResource, Director } from "hitchcock";
 ```
 
 Also import the `Director` component, and add it somewhere in your app:

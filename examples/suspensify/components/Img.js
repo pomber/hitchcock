@@ -1,5 +1,5 @@
 import React from "react";
-import { unstable_createResource as createResource } from "hitchcock";
+import { createResource } from "hitchcock";
 
 const imageResource = createResource(
   src =>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Spinner } from "./spinner";
 import { fetchMovieDetails, fetchMovieReviews } from "./api";
-import { unstable_createResource as createResource } from "hitchcock";
+import { createResource } from "hitchcock";
 
 const detailsResource = createResource(
   id => fetchMovieDetails(id),

@@ -2,9 +2,9 @@ import React from "react";
 import { Track } from "./Track";
 import { fetchArtistTopTracksJSON } from "../api";
 
-import { unstable_createResource } from "hitchcock";
+import { createResource } from "hitchcock";
 
-const ArtistTopTracksResource = unstable_createResource(
+const ArtistTopTracksResource = createResource(
   fetchArtistTopTracksJSON,
   id => `/artists/${id}/top-tracks`
 );
