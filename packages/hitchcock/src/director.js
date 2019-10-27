@@ -52,7 +52,11 @@ const ProgressBar = styled.div(({ completion }) => ({
 
 const buttons = {
   [WAITING]: <span />,
-  [RUNNING]: <span>&#10074;&#10074;</span>,
+  [RUNNING]: (
+    <span style={{ fontSize: "0.8em", letterSpacing: "-0.2em" }}>
+      &#10074;&#10074;
+    </span>
+  ),
   [PAUSED]: <span>&#9658;</span>,
   [DONE]: <span>&#10006;</span>
 };
@@ -124,7 +128,7 @@ const DirectorPanel = styled.div({
 const Header = styled.div({
   display: "flex",
   justifyContent: "space-between",
-  alignItems: "flex-end",
+  alignItems: "center",
   height: 20,
   lineHeight: "20px",
   verticalAlign: "bottom",
@@ -172,6 +176,11 @@ const Director = ({ cache }) => (
               Start paused
               <input
                 type="checkbox"
+                style={{
+                  verticalAlign: "middle",
+                  position: "relative",
+                  bottom: "1px"
+                }}
                 checked={startPaused}
                 onChange={() => cache.toggleStartPaused()}
               />
