@@ -37,7 +37,7 @@ $ yarn add hitchcock
 
 ### Director
 
-Import the `Director` component, and add it somewhere in your app:
+Import the `Director` component and add it somewhere in your app:
 
 ```jsx
 import { Director } from "hitchcock";
@@ -53,7 +53,7 @@ function YourApp() {
 
 ### Lazy
 
-Instead of using 'React.lazy' import 'lazy' from hitchcock:
+Instead of using `React.lazy` import `lazy` from hitchcock:
 
 ```jsx
 import { lazy } from "hitchcock";
@@ -70,14 +70,22 @@ const ArtistPage = lazy(() => import("./components/ArtistPage"), "ArtistPage");
 ```jsx
 import { createResource } from "hitchcock";
 
-const ComicResource = createResource(
-  id => fetch(`https://xkcd.com/${id}/info.0.json`).then(r => r.json()),
-  id => `comic-${id}`
+const BeerResource = createResource(
+  id =>
+    fetch(`https://api.punkapi.com/v2/beers/${id}`)
+      .then(r => r.json())
+      .then(d => d[0]),
+  id => `beer-${id}`
 );
 
-function Comic({ comicId }) {
-  const comic = ComicResource.read(comicId);
-  return <h1>{comic.title}</h1>;
+function Beer({ beerId }) {
+  const beer = BeerResource.read(beerId);
+  return (
+    <>
+      <h1>{beer.name}</h1>
+      <p>{beer.description}</p>
+    </>
+  );
 }
 ```
 
@@ -91,38 +99,51 @@ It returns a `resource` with a `read` method that will suspend a component until
 
 ```jsx
 import React, { Suspense } from "react";
-import { createResource } from "hitchcock";
+import ReactDOM from "react-dom";
+import { createResource, Director } from "hitchcock";
 
-const ComicResource = createResource(
-  id => fetch(`https://xkcd.com/${id}/info.0.json`).then(r => r.json()),
-  id => `comic-${id}`
+const BeerResource = createResource(
+  id =>
+    fetch(`https://api.punkapi.com/v2/beers/${id}`)
+      .then(r => r.json())
+      .then(d => d[0]),
+  id => `beer-${id}`
 );
 
 function App() {
-  const [comicId, setComicId] = React.useState(null);
-  const deferredComicId = React.useDeferredValue(comicId, { timeoutMs: 2000 });
-  const showComic = deferredComicId !== null && comicId === deferredComicId;
+  const [beerId, setBeerId] = React.useState(0);
+  const deferredBeerId = React.useDeferredValue(beerId, { timeoutMs: 1000 });
+
+  const showBeer = deferredBeerId > 0;
 
   const handleChange = e => {
-    const newComicId = +e.target.value;
-    ComicResource.preload(newComicId);
-    setComicId(newComicId);
+    const newBeerId = +e.target.value;
+    BeerResource.preload(newBeerId);
+    setBeerId(newBeerId);
   };
 
   return (
-    <div>
-      Comic: <input type="number" value={comicId} onChange={handleChange} />
-      <Suspense falback={`Loading comic ${comicId}...`}>
-        {showComic && <Comic comicId={deferredComicId} />}
+    <Director>
+      Beer # <input type="number" value={beerId} onChange={handleChange} />
+      <Suspense fallback={<div>{`Loading beer #${beerId}...`}</div>}>
+        {showBeer && <Beer beerId={deferredBeerId} />}
       </Suspense>
-    </div>
+    </Director>
   );
 }
 
-function Comic({ comicId }) {
-  const comic = ComicResource.read(comicId);
-  return <h1>{comic.title}</h1>;
+function Beer({ beerId }) {
+  const beer = BeerResource.read(beerId);
+  return (
+    <>
+      <h1>{beer.name}</h1>
+      <p>{beer.description}</p>
+    </>
+  );
 }
+
+const container = document.getElementById("root");
+ReactDOM.createRoot(container).render(<App />);
 ```
 
 ## Contributing
