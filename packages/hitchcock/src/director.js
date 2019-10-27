@@ -1,5 +1,5 @@
 import React from "react";
-import glamorous from "glamorous";
+import styled from "@emotion/styled";
 import { cachePublisher as cache, WAITING, RUNNING, PAUSED, DONE } from "./spy";
 import { createSubscription } from "create-subscription/cjs/create-subscription.production.min.js";
 import Draggable from "react-draggable";
@@ -29,12 +29,12 @@ const clickable = {
   }
 };
 
-const Row = glamorous.li({
+const Row = styled.li({
   margin: "8px 8px",
   ...clickable,
   fontSize: "15px",
   fontFamily: `"Courier New", Monaco, sans-serif`,
-  "& *:first-child": {
+  "& *:first-of-type": {
     height: 18,
     paddingBottom: 2,
     display: "flex",
@@ -45,14 +45,18 @@ const Row = glamorous.li({
   }
 });
 
-const ProgressBar = glamorous.div(({ completion }) => ({
+const ProgressBar = styled.div(({ completion }) => ({
   borderBottom: "solid 1px #222",
   width: `${completion}%`
 }));
 
 const buttons = {
   [WAITING]: <span />,
-  [RUNNING]: <span>&#10074;&#10074;</span>,
+  [RUNNING]: (
+    <span style={{ fontSize: "0.8em", letterSpacing: "-0.2em" }}>
+      &#10074;&#10074;
+    </span>
+  ),
   [PAUSED]: <span>&#9658;</span>,
   [DONE]: <span>&#10006;</span>
 };
@@ -84,7 +88,7 @@ const Record = ({ record }) => (
   </Subscription>
 );
 
-const List = glamorous.ul(({ scrollable }) => ({
+const List = styled.ul(({ scrollable }) => ({
   padding: 0,
   margin: 0,
   listStyleType: "none"
@@ -92,7 +96,7 @@ const List = glamorous.ul(({ scrollable }) => ({
   // height: `${scrollable ? 94 : "auto"}`
 }));
 
-const EmptyList = glamorous.div({
+const EmptyList = styled.div({
   fontSize: "15px",
   margin: "8px 8px",
   fontFamily: `"Courier New", Monaco, sans-serif`
@@ -109,7 +113,7 @@ const RecordList = ({ records, scrollable }) =>
     </List>
   );
 
-const DirectorPanel = glamorous.div({
+const DirectorPanel = styled.div({
   position: "fixed",
   top: 10,
   right: 10,
@@ -121,15 +125,15 @@ const DirectorPanel = glamorous.div({
   fontFamily: `Helvetica Neue, Helvetica, Arial, "Lucida Grande", sans-serif`
 });
 
-const Header = glamorous.div({
+const Header = styled.div({
   display: "flex",
   justifyContent: "space-between",
-  alignItems: "flex-end",
+  alignItems: "center",
   height: 20,
   lineHeight: "20px",
   verticalAlign: "bottom",
   margin: "20px 8px 8px 8px",
-  "& *:first-child": {
+  "& *:first-of-type": {
     fontSize: "18px",
     fontWeight: "500"
   },
@@ -140,7 +144,7 @@ const Header = glamorous.div({
   }
 });
 
-const Slider = glamorous.div({
+const Slider = styled.div({
   margin: "8px 8px 0px 8px",
   display: "flex",
   justifyContent: "space-between",
@@ -172,6 +176,11 @@ const Director = ({ cache }) => (
               Start paused
               <input
                 type="checkbox"
+                style={{
+                  verticalAlign: "middle",
+                  position: "relative",
+                  bottom: "1px"
+                }}
                 checked={startPaused}
                 onChange={() => cache.toggleStartPaused()}
               />
